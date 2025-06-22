@@ -3,11 +3,15 @@ import "prismjs/themes/prism-tomorrow.css";
 import Prism from "prismjs";
 import Editor from "react-simple-code-editor";
 import axios from "axios";
+import rehypeHighlight from "rehype-highlight";
+import "highlight.js/styles/github-dark.css";
+
+import Markdown from "react-markdown";
 import "./App.css";
 
 function App() {
   const [code, setCode] = useState(`const hello = "Hello World"`);
-  const [review, setReview] = useState();
+  const [review, setReview] = useState(``);
 
 
   useEffect(() => {
@@ -39,6 +43,7 @@ function App() {
               style={{
                 fontFamily: '"Fira code", "Fira Mono", monospace',
                 fontSize: 14,
+                height:"100%",
                 border: "none",
                 borderRadius: "0.4rem",
                 outline: "none",
@@ -54,7 +59,7 @@ function App() {
         </div>
 
         <div className="right">
-           {review ? review.response || "Invalid response" : ""}
+           <Markdown rehypePlugins={[rehypeHighlight]}>{review ? review.response || "Invalid response" : ""}</Markdown>
         </div>
       </main>
     </>
