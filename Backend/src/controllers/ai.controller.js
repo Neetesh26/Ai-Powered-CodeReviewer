@@ -3,13 +3,13 @@ const aiservice = require('../services/ai.service');
 
 module.exports.getresponse = async (req, res) => {
     try {
-        const prompt = req.body.prompt;
-        console.log(prompt);
+        const code = req.body.code;
+        console.log(code);
         
-        if (!prompt) {
+        if (!code) {
             return res.status(400).json({ error: 'Prompt is required' });
         }
-        const response = await aiservice(prompt);
+        const response = await aiservice(code);
         return res.status(200).json({ response });
 
     }
