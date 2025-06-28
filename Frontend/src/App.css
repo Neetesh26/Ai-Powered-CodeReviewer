@@ -61,4 +61,7 @@ main .right {
   background-color: rgb(51, 51, 51);
   /* background-color: aqua; */
   padding: 2rem;
+  overflow-y: auto;
+  scrollbar-width: none; 
+  scroll-behavior: smooth;
 }
